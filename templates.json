@@ -1,0 +1,412 @@
+{
+ "templates": [
+  {
+   "name": "chat-img",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    154,
+    638,
+    124,
+    124
+   ],
+   "layer0": false
+  },
+  {
+   "name": "chat-msg",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    170,
+    460,
+    548,
+    444
+   ],
+   "layer0": false
+  },
+  {
+   "name": "classifica",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    650,
+    780,
+    983
+   ],
+   "layer0": false
+  },
+  {
+   "name": "clip-dark",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    510
+   ],
+   "layer0": true
+  },
+  {
+   "name": "clip",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    510
+   ],
+   "layer0": true
+  },
+  {
+   "name": "dashboard-card-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    154,
+    897,
+    714,
+    379
+   ],
+   "layer0": false
+  },
+  {
+   "name": "dashboard-card-tablet",
+   "w": 2360,
+   "h": 1640,
+   "hole": [
+    297,
+    520,
+    2024,
+    847
+   ],
+   "layer0": false
+  },
+  {
+   "name": "fc-analyst-banner",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    151,
+    1217,
+    717,
+    408
+   ],
+   "layer0": true
+  },
+  {
+   "name": "fc-analyst-header-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    638
+   ],
+   "layer0": true
+  },
+  {
+   "name": "fc-analyst-header-tablet",
+   "w": 2200,
+   "h": 1560,
+   "hole": [
+    480,
+    63,
+    1720,
+    577
+   ],
+   "layer0": true
+  },
+  {
+   "name": "highlights-serie-a-dark",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    203,
+    780,
+    931
+   ],
+   "layer0": false
+  },
+  {
+   "name": "highlights-serie-a",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    203,
+    780,
+    931
+   ],
+   "layer0": false
+  },
+  {
+   "name": "inserimento-formazione-led",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    388,
+    780,
+    1080
+   ],
+   "layer0": false
+  },
+  {
+   "name": "inserimento-formazione-popup",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    152,
+    539,
+    717,
+    600
+   ],
+   "layer0": false
+  },
+  {
+   "name": "live-double-mobile-bottom",
+   "w": 1020,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    1591
+   ],
+   "layer0": true
+  },
+  {
+   "name": "live-double-mobile-top",
+   "w": 1020,
+   "h": 1930,
+   "hole": [
+    120,
+    504,
+    780,
+    1304
+   ],
+   "layer0": true
+  },
+  {
+   "name": "live-list-mobile",
+   "w": 1020,
+   "h": 1930,
+   "hole": [
+    120,
+    510,
+    780,
+    1275
+   ],
+   "layer0": true
+  },
+  {
+   "name": "live-simulatore",
+   "w": 1020,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    779,
+    1326
+   ],
+   "layer0": false
+  },
+  {
+   "name": "live-single-mobile",
+   "w": 1020,
+   "h": 1930,
+   "hole": [
+    120,
+    621,
+    780,
+    1158
+   ],
+   "layer0": true
+  },
+  {
+   "name": "live-tablet",
+   "w": 2560,
+   "h": 1800,
+   "hole": [
+    820,
+    197,
+    1700,
+    1579
+   ],
+   "layer0": false
+  },
+  {
+   "name": "mercato-banner",
+   "w": 1020,
+   "h": 1970,
+   "hole": [
+    121,
+    123,
+    779,
+    439
+   ],
+   "layer0": false
+  },
+  {
+   "name": "mercato-dettaglio-mobile",
+   "w": 1020,
+   "h": 1970,
+   "hole": [
+    120,
+    123,
+    780,
+    439
+   ],
+   "layer0": false
+  },
+  {
+   "name": "mercato-lista-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    439
+   ],
+   "layer0": false
+  },
+  {
+   "name": "mercato-popup",
+   "w": 1020,
+   "h": 1970,
+   "hole": [
+    152,
+    468,
+    716,
+    600
+   ],
+   "layer0": false
+  },
+  {
+   "name": "mercato-tablet",
+   "w": 2560,
+   "h": 1440,
+   "hole": [
+    0,
+    0,
+    2560,
+    400
+   ],
+   "layer0": false
+  },
+  {
+   "name": "partecipanti-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    152,
+    877,
+    716,
+    176
+   ],
+   "layer0": false
+  },
+  {
+   "name": "partecipanti-tablet",
+   "w": 2160,
+   "h": 1680,
+   "hole": [
+    840,
+    904,
+    1080,
+    135
+   ],
+   "layer0": false
+  },
+  {
+   "name": "probabili-desktop",
+   "w": 3840,
+   "h": 2506,
+   "hole": [
+    920,
+    448,
+    2000,
+    1074
+   ],
+   "layer0": false
+  },
+  {
+   "name": "probabili-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    321,
+    780,
+    440
+   ],
+   "layer0": false
+  },
+  {
+   "name": "sala-stampa-banner",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    152,
+    1370,
+    716,
+    240
+   ],
+   "layer0": false
+  },
+  {
+   "name": "sala-stampa-dashboard",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    152,
+    482,
+    716,
+    1064
+   ],
+   "layer0": false
+  },
+  {
+   "name": "sala-stampa-header",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    124,
+    780,
+    671
+   ],
+   "layer0": false
+  },
+  {
+   "name": "video-header-mobile",
+   "w": 1019,
+   "h": 1930,
+   "hole": [
+    120,
+    123,
+    780,
+    998
+   ],
+   "layer0": false
+  },
+  {
+   "name": "video-header-tablet",
+   "w": 2200,
+   "h": 1668,
+   "hole": [
+    0,
+    0,
+    2200,
+    816
+   ],
+   "layer0": false
+  }
+ ]
+}
