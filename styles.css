@@ -233,7 +233,7 @@
                 height: 180px;
                 flex: 0 0 180px;
                 width: 100%;
-                display: grid;
+                display: block;
                 place-items: center;
                 overflow: hidden;
                 border-radius: 26px 26px 20px 20px;
