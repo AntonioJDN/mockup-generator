@@ -3,110 +3,187 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mockup Generator — Sponsor Leghe Fantacalcio</title>
+<title>Mockup Generator — FC Media Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
 <style>
-:root{color-scheme:light}
+:root{
+  color-scheme:light;
+  --navy:#020034;
+  --surface:#fcfcff;
+  --surface-2:#e8effb;
+  --on-surface:#001e30;
+  --primary:#0256d1;
+  --primary-container:#dae2ff;
+  --secondary:#6300ff;
+  --secondary-container:#e9ddff;
+  --outline:#bdc7da;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f4f5f7;color:#172b4d}
-header{background:#0b1f3a;color:#fff;padding:16px 22px}
-header h1{margin:0;font-size:18px}
-header p{margin:4px 0 0;font-size:12.5px;opacity:.8}
-.wrap{display:flex;gap:18px;padding:18px;max-width:1200px;margin:0 auto;align-items:flex-start}
-.side{width:300px;flex:none}
-.side input[type=search]{width:100%;padding:8px 10px;border:1px solid #c1c7d0;border-radius:8px;font-size:14px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:70vh;overflow:auto}
-.card{border:1px solid #dfe1e6;border-radius:8px;background:#fff;cursor:pointer;padding:6px;text-align:center;font-size:11px;color:#42526e}
-.card:hover{border-color:#0052cc}
-.card.sel{border-color:#0052cc;box-shadow:0 0 0 2px #0052cc33}
-.card .thumbwrap{background-image:linear-gradient(45deg,#eee 25%,transparent 25%),linear-gradient(-45deg,#eee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eee 75%),linear-gradient(-45deg,transparent 75%,#eee 75%);background-size:14px 14px;background-position:0 0,0 7px,7px -7px,-7px 0;border-radius:5px;height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:4px}
-.card img{max-width:100%;max-height:118px;object-fit:contain}
-.main{flex:1;background:#fff;border:1px solid #dfe1e6;border-radius:10px;padding:18px;min-height:300px}
-.main h2{margin:0 0 6px;font-size:16px}
-.meta{font-size:13px;color:#6b778c;margin-bottom:12px}
-.meta b{color:#172b4d}
-.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.btn{padding:9px 14px;border-radius:8px;border:1px solid #c1c7d0;background:#fff;cursor:pointer;font-size:14px}
-.btn.primary{background:#0052cc;color:#fff;border-color:#0052cc}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.stage{background-image:linear-gradient(45deg,#eee 25%,transparent 25%),linear-gradient(-45deg,#eee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eee 75%),linear-gradient(-45deg,transparent 75%,#eee 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border:1px solid #dfe1e6;border-radius:8px;padding:10px;text-align:center}
-.stage canvas{max-width:100%;height:auto;box-shadow:0 1px 6px #0003}
-.empty{color:#97a0af;padding:40px;text-align:center}
-.hint{font-size:12px;color:#6b778c;margin-top:10px}
-code{background:#eef;padding:1px 5px;border-radius:4px}
+html,body{height:100%}
+body{
+  margin:0;
+  min-width:320px;
+  background:var(--navy);
+  color:var(--on-surface);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  overflow:hidden;
+}
+body::before,body::after{
+  content:"";
+  position:fixed;
+  inset:auto;
+  pointer-events:none;
+  opacity:.55;
+  transform:rotate(32deg);
+}
+body::before{width:760px;height:110px;left:-160px;top:12px;background:#111365}
+body::after{width:900px;height:140px;right:-180px;bottom:-40px;background:#10115e}
+button,input{font:inherit}
+button{border:0}
+.material-symbols-rounded{font-size:28px;line-height:1;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 28}
+.app{height:100%;padding:8px;display:flex;flex-direction:column;position:relative;z-index:1}
+.topbar{height:96px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;color:#fff;flex:none}
+.brand{display:flex;align-items:center;gap:20px;font-size:20px}
+.brand-mark{width:104px;height:60px;display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none}
+.brand-disc{width:48px;height:48px;border-radius:14px;background:#123cff;display:grid;place-items:center;font-weight:800;font-size:24px;box-shadow:0 8px 24px #0004}
+.brand-words{font-size:9px;font-weight:700;line-height:1.15;letter-spacing:1.1px}
+.version{font-size:14px}
+.shell{min-height:0;flex:1;display:flex;background:var(--surface);border-radius:40px;overflow:hidden}
+.sidebar{width:466px;flex:none;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--surface);border-right:2px solid var(--surface-2)}
+.toolbar{display:flex;gap:10px;flex:none}
+.search{height:48px;min-width:0;flex:1;display:flex;align-items:center;gap:10px;padding:0 16px;border-radius:30px;background:var(--surface-2)}
+.search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--on-surface);font-size:16px}
+.search input::placeholder{color:var(--on-surface);opacity:.78}
+.view-btn{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);color:var(--on-surface);cursor:pointer;transition:.18s ease}
+.view-btn:hover{transform:translateY(-1px)}
+.view-btn.active{background:var(--primary-container);color:var(--primary)}
+.grid{min-height:0;flex:1;overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:10px;padding-right:3px;scrollbar-width:thin}
+.grid.list{grid-template-columns:1fr}
+.card{min-width:0;padding:4px;border:2px solid transparent;border-radius:30px;background:var(--surface-2);color:#000;cursor:pointer;overflow:hidden;display:flex;flex-direction:column;align-items:center;transition:border-color .18s,background .18s,transform .18s}
+.card:hover{transform:translateY(-2px)}
+.card.selected{border-color:var(--primary);background:var(--primary-container)}
+.thumb{height:180px;width:100%;display:grid;place-items:center;overflow:hidden;border-radius:26px 26px 20px 20px;background:linear-gradient(145deg,#fff9,#dbe5f5)}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.card-name{width:100%;padding:8px 5px 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:15px;font-weight:500;text-transform:capitalize}
+.grid.list .card{height:108px;display:grid;grid-template-columns:92px minmax(0,1fr);padding:4px 14px 4px 4px}
+.grid.list .thumb{height:96px;border-radius:26px}
+.grid.list .card-name{text-align:left;padding-left:16px;font-size:16px}
+.empty-list{grid-column:1/-1;padding:40px 20px;color:#59677b;text-align:center}
+.workspace{min-width:0;flex:1;padding:20px 40px;display:flex;flex-direction:column;gap:20px;align-items:center;justify-content:center}
+.stage{min-height:0;flex:1;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:60px;position:relative;background:#fafbff}
+.stage-placeholder{text-align:center;color:#6a778c;padding:30px}
+.stage-placeholder .material-symbols-rounded{font-size:54px;color:var(--primary);margin-bottom:10px}
+.preview,.stage canvas{display:none;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 15px #0004)}
+.preview.visible,.stage canvas.visible{display:block}
+.footer{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;flex:none}
+.actions{display:flex;align-items:center;gap:10px}
+.action{height:60px;padding:0 16px;border-radius:20px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:16px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:filter .18s,transform .18s}
+.action:hover{filter:brightness(.98);transform:translateY(-1px)}
+.action.examples{background:var(--secondary-container);color:var(--secondary)}
+.action.upload{width:240px;background:var(--surface-2);color:var(--on-surface)}
+.action.save{width:240px;background:var(--primary);color:#fff}
+.action:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.status{position:absolute;inset:16px 16px auto auto;padding:8px 12px;border-radius:12px;background:#001e30d9;color:#fff;font-size:12px;opacity:0;transform:translateY(-5px);transition:.2s;pointer-events:none}
+.status.show{opacity:1;transform:none}
+@media(max-width:1050px){
+  .sidebar{width:390px}.thumb{height:150px}.action.upload,.action.save{width:auto;min-width:180px}
+}
+@media(max-width:820px){
+  body{overflow:auto}.app{height:auto;min-height:100%}.topbar{height:80px;padding:14px 16px}.brand-mark{width:auto}.brand-words{display:none}.version{font-size:12px}
+  .shell{min-height:calc(100vh - 96px);flex-direction:column;border-radius:28px}.sidebar{width:100%;height:420px;border-right:0;border-bottom:2px solid var(--surface-2);border-radius:28px 28px 0 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{min-height:620px;padding:20px}.stage{border-radius:32px}.footer{align-items:stretch;flex-direction:column}.actions{display:grid;grid-template-columns:1fr 1fr}.action.examples,.action.upload,.action.save{width:100%}
+}
+@media(max-width:480px){
+  .topbar{padding-inline:8px}.brand{gap:9px;font-size:15px}.brand-disc{width:42px;height:42px}.sidebar{height:390px;padding:12px}.thumb{height:130px}.card-name{font-size:12px}.workspace{min-height:540px;padding:14px}.actions{grid-template-columns:1fr}.action{height:54px}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>Mockup Generator — Sponsor Leghe Fantacalcio</h1>
-<p>Scegli un template, carica l'immagine sponsor (dimensioni esatte del PSD) e scarica il mockup finito. Tutto nel browser, nessun caricamento su server.</p>
-</header>
-<div class="wrap">
-  <div class="side">
-    <input type="search" id="q" placeholder="Cerca template…">
-    <div class="grid" id="grid"></div>
-  </div>
-  <div class="main" id="main">
-    <div class="empty">Seleziona un template dall'elenco a sinistra.</div>
-  </div>
-</div>
+<main class="app">
+  <header class="topbar">
+    <div class="brand">
+      <a class="brand-mark" href="https://www.fantacalcio.it" target="_blank" rel="noreferrer" aria-label="FC Media Hub">
+        <span class="brand-disc">C</span><span class="brand-words">MEDIA<br>HUB</span>
+      </a>
+      <span>/</span><span>Mockup Generator</span>
+    </div>
+    <span class="version">v.0.0.02</span>
+  </header>
+  <section class="shell">
+    <aside class="sidebar" aria-label="Elenco mockup">
+      <div class="toolbar">
+        <label class="search">
+          <span class="material-symbols-rounded" aria-hidden="true">search</span>
+          <input type="search" id="q" placeholder="Cerca mockup" autocomplete="off" aria-label="Cerca mockup">
+        </label>
+        <button class="view-btn active" id="gridView" type="button" aria-label="Vista griglia" aria-pressed="true"><span class="material-symbols-rounded">grid_view</span></button>
+        <button class="view-btn" id="listView" type="button" aria-label="Vista elenco" aria-pressed="false"><span class="material-symbols-rounded">view_list</span></button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </aside>
+    <section class="workspace">
+      <div class="stage" id="stage">
+        <div class="stage-placeholder" id="placeholder"><span class="material-symbols-rounded">image</span><div>Seleziona un mockup dalla lista</div></div>
+        <img class="preview" id="preview" alt="Anteprima mockup selezionato">
+        <canvas id="cv"></canvas>
+        <div class="status" id="status" role="status"></div>
+      </div>
+      <footer class="footer">
+        <a class="action examples" href="https://drive.google.com/drive/folders/1gYIlH0IzYvyXhO8IX26-dEVNIpHT2qIW" target="_blank" rel="noreferrer"><span class="material-symbols-rounded">lightbulb</span>Esempi</a>
+        <div class="actions">
+          <label class="action upload"><span class="material-symbols-rounded">upload</span>Carica immagine<input type="file" id="file" accept="image/*" hidden></label>
+          <button class="action save" id="dl" type="button" disabled><span class="material-symbols-rounded">download</span>Salva PNG</button>
+        </div>
+      </footer>
+    </section>
+  </section>
+</main>
 <script>
 const GREEN='templates/green/', LAYER0='templates/layer0/';
-let TPL=[], sel=null, sponsorImg=null;
-const main=document.getElementById('main');
-
-function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=rej;i.src=src;});}
-
-fetch('templates.json').then(r=>r.json()).then(d=>{TPL=d.templates;renderGrid();}).catch(e=>{
-  document.getElementById('grid').innerHTML='<div class="hint">Impossibile caricare templates.json. Apri la pagina via GitHub Pages o un server locale (non da file://).</div>';
-});
-
+const DRIVE='https://lh3.googleusercontent.com/d/';
+const PREVIEWS={
+  'chat-img':'1Osim-VlJZBZgAnK9jz3J2fPuX0fgmu2c','chat-msg':'17C4VkCm7DAtRmatAWxFa8ICbzzJp7SWg','classifica':'1nrxPPO0LjGdhGoV4DrgM2P0qdKkf-GSe','clip-dark':'1O-ksjVgcLu-PwkBvlueFawXMTdIgfzRV','clip':'1-gMtdT0u3DGanqk5GIuqTIcHeqQAFHZK','dashboard-card-mobile':'1JbzO1wiPB2y-bUB4wgIj5Uf9KPkB8Apu','dashboard-card-tablet':'1jVcCpA-5UDv3k_N4qCFn952EBilxmHHY','fc-analyst-banner':'1cRqo9GgGqabUgAqQUZF7wX-QNVDi6fzi','fc-analyst-header-mobile':'1MsF1upQbf-vkET2wtEH6HrLv8rWhL4qb','fc-analyst-header-tablet':'1kr0goH5knI2WyTpC6kN383rcQYh51XK9','highlights-serie-a-dark':'1c61Np6tapD8kmh1as-dqEMPqAlAdcWPS','highlights-serie-a':'1GdWcHxzDSZuzihv60v2aZV4PEkDbfl52','inserimento-formazione-led':'1jReAg3muaNYGdD7xfqLAfD-M24w8d6To','inserimento-formazione-popup':'1c4DD0LMifJlnG2Oi14CLevZooJDgr8rD','live-double-mobile-bottom':'1Ug6uh73BlsxHk2ZyngKwvyZSHEAQe7JI','live-double-mobile-top':'1mHrPfJOjt4aWiwPt_Qs3RSONAR-OApPa','live-list-mobile':'1MlXobPClNW9l9nCpYnEpUB_40gsLsC1i','live-simulatore':'16biki4K3pG4bM-oejXAzi0GhQIMzrhRD','live-single-mobile':'1Clh_LcNfreDqHq817ufR1wv906B14g5k','live-tablet':'1KPL5CqRGtZqCoiiC2HZR0NEIQ3phYkIE','mercato-banner':'1ObXPlVRmfRYnzKF6LWLpq7YxZl4DaqW-','mercato-dettaglio-mobile':'1kJ8RXfqvXyA4DxnMgq6aL2d6TJ8CNKqD','mercato-lista-mobile':'1FPmWltY5a8frQXhYZ09I_c9HSFpdYuc4','mercato-popup':'1Fqlxxmu4MaKY41BBnZnAorkySUCM4WBX','mercato-tablet':'1CWKHOwv9IxKYnR-dfevEnqR3A9zQ9lWC','partecipanti-mobile':'1HjxLcBsc-VPBtdXsyIhBVuBV0xGNCUUw','partecipanti-tablet':'1Iy1qr946YWw2oCgkSiEybGI3qAzXPvkq','probabili-desktop':'1Ho47BunGgJEZTWIuYAAyLKP2sL406jYo','probabili-mobile':'1-Juvk_Jcjnc0VJm7p3xEgCaYiAqnENsI','sala-stampa-banner':'13LJDc2-tweZrhMUUfgxXNz8LENMGX81L','sala-stampa-dashboard':'1SdPw18w6xQnMAsQxvj2btohdIFRJ4LpY','sala-stampa-header':'1Fp19zDHCKIuOBUab-HcjyhmfTTMNaRCi','video-header-mobile':'1Wo0cEnHyGB5fKfiVEM6YcxCMUlMhXi3n','video-header-tablet':'1WNd0XWO4TH2FNa3tbnSB0b6i6veC9PzL'
+};
+let TPL=[],sel=null,sponsorImg=null,layout='grid';
+const grid=document.getElementById('grid'),preview=document.getElementById('preview'),canvas=document.getElementById('cv'),placeholder=document.getElementById('placeholder'),downloadBtn=document.getElementById('dl');
+const previewUrl=name=>PREVIEWS[name]?`${DRIVE}${PREVIEWS[name]}=w600`:GREEN+name+'.png';
+const label=name=>name.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
+function loadImg(src){return new Promise((resolve,reject)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=src;});}
+function notify(message){const status=document.getElementById('status');status.textContent=message;status.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>status.classList.remove('show'),2200);}
 function renderGrid(){
-  const q=document.getElementById('q').value.toLowerCase();
-  const g=document.getElementById('grid'); g.innerHTML='';
-  TPL.filter(t=>t.name.includes(q)).forEach(t=>{
-    const c=document.createElement('div'); c.className='card'+(sel&&sel.name===t.name?' sel':'');
-    c.innerHTML=`<div class="thumbwrap"><img loading="lazy" src="${GREEN}${t.name}.png"></div>${t.name}`;
-    c.onclick=()=>selectTpl(t); g.appendChild(c);
-  });
+  const query=document.getElementById('q').value.trim().toLowerCase();
+  const items=TPL.filter(t=>t.name.toLowerCase().includes(query)||label(t.name).toLowerCase().includes(query));
+  grid.innerHTML='';grid.classList.toggle('list',layout==='list');
+  if(!items.length){grid.innerHTML='<div class="empty-list">Nessun mockup trovato.</div>';return;}
+  const fragment=document.createDocumentFragment();
+  items.forEach(t=>{
+    const card=document.createElement('button');card.type='button';card.className='card'+(sel?.name===t.name?' selected':'');card.dataset.name=t.name;card.setAttribute('aria-label',`Apri ${label(t.name)}`);card.innerHTML=`<span class="thumb"><img loading="lazy" src="${previewUrl(t.name)}" alt=""></span><span class="card-name">${label(t.name)}</span>`;card.addEventListener('click',()=>selectTpl(t));fragment.appendChild(card);
+  });grid.appendChild(fragment);
+}
+function setLayout(next){layout=next;document.getElementById('gridView').classList.toggle('active',next==='grid');document.getElementById('listView').classList.toggle('active',next==='list');document.getElementById('gridView').setAttribute('aria-pressed',next==='grid');document.getElementById('listView').setAttribute('aria-pressed',next==='list');renderGrid();}
+function selectTpl(t){
+  sel=t;sponsorImg=null;downloadBtn.disabled=true;canvas.classList.remove('visible');preview.src=previewUrl(t.name);preview.alt=`Anteprima ${label(t.name)}`;preview.classList.add('visible');placeholder.hidden=true;renderGrid();
+}
+async function onFile(event){
+  const file=event.target.files[0];if(!file||!sel)return;
+  try{const url=URL.createObjectURL(file);sponsorImg=await loadImg(url);URL.revokeObjectURL(url);await draw();preview.classList.remove('visible');canvas.classList.add('visible');downloadBtn.disabled=false;notify('Immagine caricata');}catch(error){notify('Impossibile caricare l’immagine');}
+}
+async function draw(){
+  const t=sel,ctx=canvas.getContext('2d');canvas.width=t.w;canvas.height=t.h;ctx.clearRect(0,0,t.w,t.h);
+  if(t.layer0){try{const background=await loadImg(LAYER0+t.name+'.png');ctx.drawImage(background,0,0,t.w,t.h);}catch(error){}}
+  if(sponsorImg){const [x,y,w,h]=t.hole;ctx.drawImage(sponsorImg,x,y,w,h);}
+  const overlay=await loadImg(GREEN+t.name+'.png');ctx.drawImage(overlay,0,0,t.w,t.h);
+}
+function download(){
+  if(!sel||!sponsorImg)return;canvas.toBlob(blob=>{if(!blob)return;const link=document.createElement('a'),url=URL.createObjectURL(blob);link.href=url;link.download=sel.name+'_mockup.png';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);},'image/png');
 }
 document.getElementById('q').addEventListener('input',renderGrid);
-
-async function selectTpl(t){ sel=t; sponsorImg=null; renderGrid(); renderMain(); }
-
-function renderMain(){
-  const t=sel; const h=t.hole;
-  main.innerHTML=`
-    <h2>${t.name}</h2>
-    <div class="meta">Tela: <b>${t.w}×${t.h}px</b> · Buco (area sponsor): <b>${h[2]}×${h[3]}px</b>${t.layer0 ? " · <b>doppio layer</b> (sfondo dietro l'immagine)" : ""}</div>
-    <div class="controls">
-      <label class="btn">Carica immagine sponsor<input type="file" id="file" accept="image/*" hidden></label>
-      <button class="btn primary" id="dl" disabled>Scarica mockup PNG</button>
-    </div>
-    <div class="stage"><canvas id="cv" width="${t.w}" height="${t.h}"></canvas></div>
-    <div class="hint">Suggerimento: prepara l'immagine sponsor a <code>${h[2]}×${h[3]}px</code> per un incastro perfetto. Verrà comunque adattata al buco.</div>`;
-  document.getElementById('file').addEventListener('change',onFile);
-  document.getElementById('dl').addEventListener('click',download);
-  draw();
-}
-
-async function onFile(e){
-  const f=e.target.files[0]; if(!f) return;
-  const url=URL.createObjectURL(f); sponsorImg=await loadImg(url);
-  document.getElementById('dl').disabled=false; draw();
-}
-
-async function draw(){
-  const t=sel, cv=document.getElementById('cv'), ctx=cv.getContext('2d');
-  ctx.clearRect(0,0,t.w,t.h);
-  if(t.layer0){ try{const l0=await loadImg(LAYER0+t.name+'.png'); ctx.drawImage(l0,0,0,t.w,t.h);}catch(e){} }
-  if(sponsorImg){ const[hx,hy,hw,hh]=t.hole; ctx.drawImage(sponsorImg,hx,hy,hw,hh); }
-  const ov=await loadImg(GREEN+t.name+'.png'); ctx.drawImage(ov,0,0,t.w,t.h);
-}
-
-function download(){
-  const cv=document.getElementById('cv');
-  cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=sel.name+'_mockup.png';a.click();});
-}
+document.getElementById('gridView').addEventListener('click',()=>setLayout('grid'));
+document.getElementById('listView').addEventListener('click',()=>setLayout('list'));
+document.getElementById('file').addEventListener('change',onFile);
+downloadBtn.addEventListener('click',download);
+fetch('templates.json').then(response=>{if(!response.ok)throw new Error('templates.json');return response.json();}).then(data=>{TPL=data.templates;renderGrid();if(TPL.length)selectTpl(TPL.find(t=>t.name==='sala-stampa-dashboard')||TPL[0]);}).catch(()=>{grid.innerHTML='<div class="empty-list">Impossibile caricare i template.</div>';});
 </script>
 </body>
 </html>
