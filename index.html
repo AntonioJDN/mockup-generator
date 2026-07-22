@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=0.0.05">
+<link rel="stylesheet" href="styles.css?v=0.0.06">
 </head>
 <body>
 <main class="app">
@@ -18,7 +18,7 @@
       </a>
       <span>/</span><span>Mockup Generator</span>
     </div>
-    <span class="version">v.0.0.05</span>
+    <span class="version">v.0.0.06</span>
   </header>
   <section class="shell">
     <aside class="sidebar" aria-label="Elenco mockup">
@@ -114,11 +114,12 @@ const EXAMPLES=[
   {category:'Classifica',name:'Disney 02',id:'1AL9R92jP5rS9e2Fk1mMppwo4bGF9uzs7'}
 ];
 let TPL=[],sel=null,sponsorImg=null,layout='grid',examplesIndex=0,examplesOpen=false;
-const grid=document.getElementById('grid'),preview=document.getElementById('preview'),canvas=document.getElementById('cv'),placeholder=document.getElementById('placeholder'),downloadBtn=document.getElementById('dl');
+const grid=document.getElementById('grid'),stage=document.getElementById('stage'),preview=document.getElementById('preview'),canvas=document.getElementById('cv'),placeholder=document.getElementById('placeholder'),downloadBtn=document.getElementById('dl');
 const previewUrl=(name,size=600)=>PREVIEWS[name]?`${DRIVE}${PREVIEWS[name]}=w${size}`:GREEN+name+'.png';
 const label=name=>name.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
 function loadImg(src){return new Promise((resolve,reject)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=src;});}
 function notify(message){const status=document.getElementById('status');status.textContent=message;status.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>status.classList.remove('show'),2200);}
+function setStageLoading(loading){stage.classList.toggle('loading',loading);stage.setAttribute('aria-busy',String(loading));}
 const examplesOverlay=document.getElementById('examplesOverlay'),examplesTrack=document.getElementById('examplesTrack'),examplesDots=document.getElementById('examplesDots'),examplesCounter=document.getElementById('examplesCounter');
 const examplesButton=document.getElementById('examplesBtn'),examplesPrev=document.getElementById('examplesPrev'),examplesNext=document.getElementById('examplesNext');
 const exampleUrl=id=>`${DRIVE}${id}=w1200`;
@@ -159,7 +160,7 @@ function renderGrid(){
 }
 function setLayout(next){layout=next;document.getElementById('gridView').classList.toggle('active',next==='grid');document.getElementById('listView').classList.toggle('active',next==='list');document.getElementById('gridView').setAttribute('aria-pressed',next==='grid');document.getElementById('listView').setAttribute('aria-pressed',next==='list');renderGrid();}
 function selectTpl(t){
-  sel=t;sponsorImg=null;downloadBtn.disabled=true;canvas.classList.remove('visible');preview.src=previewUrl(t.name,900);preview.alt=`Anteprima ${label(t.name)}`;preview.classList.add('visible');placeholder.hidden=true;updateExamplesButton();renderGrid();
+  sel=t;sponsorImg=null;downloadBtn.disabled=true;canvas.classList.remove('visible');preview.classList.remove('visible');setStageLoading(true);preview.src=previewUrl(t.name,900);preview.alt=`Anteprima ${label(t.name)}`;placeholder.hidden=true;updateExamplesButton();renderGrid();
 }
 async function onFile(event){
   const file=event.target.files[0];if(!file||!sel)return;
@@ -179,6 +180,8 @@ document.getElementById('gridView').addEventListener('click',()=>setLayout('grid
 document.getElementById('listView').addEventListener('click',()=>setLayout('list'));
 document.getElementById('file').addEventListener('change',onFile);
 downloadBtn.addEventListener('click',download);
+preview.addEventListener('load',()=>{setStageLoading(false);if(!sponsorImg)preview.classList.add('visible');});
+preview.addEventListener('error',()=>{setStageLoading(false);notify('Impossibile caricare l’anteprima');});
 examplesButton.addEventListener('click',openExamples);
 document.getElementById('examplesClose').addEventListener('click',closeExamples);
 document.getElementById('examplesPrev').addEventListener('click',()=>moveExamples(-1));

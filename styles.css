@@ -324,11 +324,33 @@
                 width: auto;
                 height: auto;
                 object-fit: contain;
-                filter: drop-shadow(0 8px 15px #0004)
+                filter: drop-shadow(0 8px 15px #0004);
+                transition: opacity .2s ease
             }
 
             .preview.visible,.stage canvas.visible {
                 display: block
+            }
+
+            .stage.loading::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                border-radius: inherit;
+                pointer-events: none;
+                background: linear-gradient(105deg,transparent 25%,#e8effbcc 42%,#ffffff 50%,#e8effbcc 58%,transparent 75%);
+                background-size: 240% 100%;
+                animation: preview-shimmer 1.15s linear infinite
+            }
+
+            @keyframes preview-shimmer {
+                from {background-position: 120% 0}
+                to {background-position: -120% 0}
+            }
+
+            @media(prefers-reduced-motion: reduce) {
+                .stage.loading::after {animation: none;background: #e8effb99}
             }
 
             .footer {
