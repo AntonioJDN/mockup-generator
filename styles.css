@@ -580,6 +580,12 @@
     filter: brightness(.97);
 }
 
+.carousel-arrow:disabled {
+    opacity:.28;
+    cursor:default;
+    transform:none
+}
+
 .examples-close {
     width: 60px;
     height: 60px;
