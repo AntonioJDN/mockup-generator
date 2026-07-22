@@ -77,7 +77,7 @@ function renderMain(){
   const t=sel; const h=t.hole;
   main.innerHTML=`
     <h2>${t.name}</h2>
-    <div class="meta">Tela: <b>${t.w}×${t.h}px</b> · Buco (area sponsor): <b>${h[2]}×${h[3]}px</b>${t.layer0?' · <b>doppio layer</b> (sfondo dietro l\\'immagine)':''}</div>
+    <div class="meta">Tela: <b>${t.w}×${t.h}px</b> · Buco (area sponsor): <b>${h[2]}×${h[3]}px</b>${t.layer0 ? " · <b>doppio layer</b> (sfondo dietro l'immagine)" : ""}</div>
     <div class="controls">
       <label class="btn">Carica immagine sponsor<input type="file" id="file" accept="image/*" hidden></label>
       <button class="btn primary" id="dl" disabled>Scarica mockup PNG</button>
