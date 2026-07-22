@@ -7,97 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
-<style>
-:root{
-  color-scheme:light;
-  --navy:#020034;
-  --surface:#fcfcff;
-  --surface-2:#e8effb;
-  --on-surface:#001e30;
-  --primary:#0256d1;
-  --primary-container:#dae2ff;
-  --secondary:#6300ff;
-  --secondary-container:#e9ddff;
-  --outline:#bdc7da;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  min-width:320px;
-  background:var(--navy);
-  color:var(--on-surface);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  overflow:hidden;
-}
-body::before,body::after{
-  content:"";
-  position:fixed;
-  inset:auto;
-  pointer-events:none;
-  opacity:.55;
-  transform:rotate(32deg);
-}
-body::before{width:760px;height:110px;left:-160px;top:12px;background:#111365}
-body::after{width:900px;height:140px;right:-180px;bottom:-40px;background:#10115e}
-button,input{font:inherit}
-button{border:0}
-.material-symbols-rounded{font-size:28px;line-height:1;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 28}
-.app{height:100%;padding:8px;display:flex;flex-direction:column;position:relative;z-index:1}
-.topbar{height:96px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;color:#fff;flex:none}
-.brand{display:flex;align-items:center;gap:20px;font-size:20px}
-.brand-mark{width:104px;height:60px;display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none}
-.brand-disc{width:48px;height:48px;border-radius:14px;background:#123cff;display:grid;place-items:center;font-weight:800;font-size:24px;box-shadow:0 8px 24px #0004}
-.brand-words{font-size:9px;font-weight:700;line-height:1.15;letter-spacing:1.1px}
-.version{font-size:14px}
-.shell{min-height:0;flex:1;display:flex;background:var(--surface);border-radius:40px;overflow:hidden}
-.sidebar{width:466px;flex:none;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--surface);border-right:2px solid var(--surface-2)}
-.toolbar{display:flex;gap:10px;flex:none}
-.search{height:48px;min-width:0;flex:1;display:flex;align-items:center;gap:10px;padding:0 16px;border-radius:30px;background:var(--surface-2)}
-.search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--on-surface);font-size:16px}
-.search input::placeholder{color:var(--on-surface);opacity:.78}
-.view-btn{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);color:var(--on-surface);cursor:pointer;transition:.18s ease}
-.view-btn:hover{transform:translateY(-1px)}
-.view-btn.active{background:var(--primary-container);color:var(--primary)}
-.grid{min-height:0;flex:1;overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:10px;padding-right:3px;scrollbar-width:thin}
-.grid.list{grid-template-columns:1fr}
-.card{min-width:0;padding:4px;border:2px solid transparent;border-radius:30px;background:var(--surface-2);color:#000;cursor:pointer;overflow:hidden;display:flex;flex-direction:column;align-items:center;transition:border-color .18s,background .18s,transform .18s}
-.card:hover{transform:translateY(-2px)}
-.card.selected{border-color:var(--primary);background:var(--primary-container)}
-.thumb{height:180px;width:100%;display:grid;place-items:center;overflow:hidden;border-radius:26px 26px 20px 20px;background:linear-gradient(145deg,#fff9,#dbe5f5)}
-.thumb img{width:100%;height:100%;object-fit:contain;display:block}
-.card-name{width:100%;padding:8px 5px 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:15px;font-weight:500;text-transform:capitalize}
-.grid.list .card{height:108px;display:grid;grid-template-columns:92px minmax(0,1fr);padding:4px 14px 4px 4px}
-.grid.list .thumb{height:96px;border-radius:26px}
-.grid.list .card-name{text-align:left;padding-left:16px;font-size:16px}
-.empty-list{grid-column:1/-1;padding:40px 20px;color:#59677b;text-align:center}
-.workspace{min-width:0;flex:1;padding:20px 40px;display:flex;flex-direction:column;gap:20px;align-items:center;justify-content:center}
-.stage{min-height:0;flex:1;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:60px;position:relative;background:#fafbff}
-.stage-placeholder{text-align:center;color:#6a778c;padding:30px}
-.stage-placeholder .material-symbols-rounded{font-size:54px;color:var(--primary);margin-bottom:10px}
-.preview,.stage canvas{display:none;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 15px #0004)}
-.preview.visible,.stage canvas.visible{display:block}
-.footer{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;flex:none}
-.actions{display:flex;align-items:center;gap:10px}
-.action{height:60px;padding:0 16px;border-radius:20px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:500;font-size:16px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:filter .18s,transform .18s}
-.action:hover{filter:brightness(.98);transform:translateY(-1px)}
-.action.examples{background:var(--secondary-container);color:var(--secondary)}
-.action.upload{width:240px;background:var(--surface-2);color:var(--on-surface)}
-.action.save{width:240px;background:var(--primary);color:#fff}
-.action:disabled{opacity:.45;cursor:not-allowed;transform:none}
-.status{position:absolute;inset:16px 16px auto auto;padding:8px 12px;border-radius:12px;background:#001e30d9;color:#fff;font-size:12px;opacity:0;transform:translateY(-5px);transition:.2s;pointer-events:none}
-.status.show{opacity:1;transform:none}
-@media(max-width:1050px){
-  .sidebar{width:390px}.thumb{height:150px}.action.upload,.action.save{width:auto;min-width:180px}
-}
-@media(max-width:820px){
-  body{overflow:auto}.app{height:auto;min-height:100%}.topbar{height:80px;padding:14px 16px}.brand-mark{width:auto}.brand-words{display:none}.version{font-size:12px}
-  .shell{min-height:calc(100vh - 96px);flex-direction:column;border-radius:28px}.sidebar{width:100%;height:420px;border-right:0;border-bottom:2px solid var(--surface-2);border-radius:28px 28px 0 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{min-height:620px;padding:20px}.stage{border-radius:32px}.footer{align-items:stretch;flex-direction:column}.actions{display:grid;grid-template-columns:1fr 1fr}.action.examples,.action.upload,.action.save{width:100%}
-}
-@media(max-width:480px){
-  .topbar{padding-inline:8px}.brand{gap:9px;font-size:15px}.brand-disc{width:42px;height:42px}.sidebar{height:390px;padding:12px}.thumb{height:130px}.card-name{font-size:12px}.workspace{min-height:540px;padding:14px}.actions{grid-template-columns:1fr}.action{height:54px}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <main class="app">
@@ -108,7 +18,7 @@ button{border:0}
       </a>
       <span>/</span><span>Mockup Generator</span>
     </div>
-    <span class="version">v.0.0.02</span>
+    <span class="version">v.0.0.03</span>
   </header>
   <section class="shell">
     <aside class="sidebar" aria-label="Elenco mockup">
@@ -130,7 +40,7 @@ button{border:0}
         <div class="status" id="status" role="status"></div>
       </div>
       <footer class="footer">
-        <a class="action examples" href="https://drive.google.com/drive/folders/1gYIlH0IzYvyXhO8IX26-dEVNIpHT2qIW" target="_blank" rel="noreferrer"><span class="material-symbols-rounded">lightbulb</span>Esempi</a>
+        <button class="action examples" id="examplesBtn" type="button"><span class="material-symbols-rounded">lightbulb</span>Esempi</button>
         <div class="actions">
           <label class="action upload"><span class="material-symbols-rounded">upload</span>Carica immagine<input type="file" id="file" accept="image/*" hidden></label>
           <button class="action save" id="dl" type="button" disabled><span class="material-symbols-rounded">download</span>Salva PNG</button>
@@ -139,18 +49,104 @@ button{border:0}
     </section>
   </section>
 </main>
+<div class="examples-overlay" id="examplesOverlay" aria-hidden="true">
+  <section class="examples-dialog" role="dialog" aria-modal="true" aria-label="Esempi creativi">
+    <button class="examples-close" id="examplesClose" type="button" aria-label="Chiudi esempi"><span class="material-symbols-rounded">close</span></button>
+    <button class="carousel-arrow prev" id="examplesPrev" type="button" aria-label="Esempi precedenti"><span class="material-symbols-rounded">chevron_left</span></button>
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="examplesTrack"></div>
+    </div>
+    <button class="carousel-arrow next" id="examplesNext" type="button" aria-label="Esempi successivi"><span class="material-symbols-rounded">chevron_right</span></button>
+    <div class="carousel-meta"><div class="carousel-dots" id="examplesDots"></div><span id="examplesCounter"></span></div>
+  </section>
+</div>
 <script>
 const GREEN='templates/green/', LAYER0='templates/layer0/';
 const DRIVE='https://lh3.googleusercontent.com/d/';
 const PREVIEWS={
   'chat-img':'1Osim-VlJZBZgAnK9jz3J2fPuX0fgmu2c','chat-msg':'17C4VkCm7DAtRmatAWxFa8ICbzzJp7SWg','classifica':'1nrxPPO0LjGdhGoV4DrgM2P0qdKkf-GSe','clip-dark':'1O-ksjVgcLu-PwkBvlueFawXMTdIgfzRV','clip':'1-gMtdT0u3DGanqk5GIuqTIcHeqQAFHZK','dashboard-card-mobile':'1JbzO1wiPB2y-bUB4wgIj5Uf9KPkB8Apu','dashboard-card-tablet':'1jVcCpA-5UDv3k_N4qCFn952EBilxmHHY','fc-analyst-banner':'1cRqo9GgGqabUgAqQUZF7wX-QNVDi6fzi','fc-analyst-header-mobile':'1MsF1upQbf-vkET2wtEH6HrLv8rWhL4qb','fc-analyst-header-tablet':'1kr0goH5knI2WyTpC6kN383rcQYh51XK9','highlights-serie-a-dark':'1c61Np6tapD8kmh1as-dqEMPqAlAdcWPS','highlights-serie-a':'1GdWcHxzDSZuzihv60v2aZV4PEkDbfl52','inserimento-formazione-led':'1jReAg3muaNYGdD7xfqLAfD-M24w8d6To','inserimento-formazione-popup':'1c4DD0LMifJlnG2Oi14CLevZooJDgr8rD','live-double-mobile-bottom':'1Ug6uh73BlsxHk2ZyngKwvyZSHEAQe7JI','live-double-mobile-top':'1mHrPfJOjt4aWiwPt_Qs3RSONAR-OApPa','live-list-mobile':'1MlXobPClNW9l9nCpYnEpUB_40gsLsC1i','live-simulatore':'16biki4K3pG4bM-oejXAzi0GhQIMzrhRD','live-single-mobile':'1Clh_LcNfreDqHq817ufR1wv906B14g5k','live-tablet':'1KPL5CqRGtZqCoiiC2HZR0NEIQ3phYkIE','mercato-banner':'1ObXPlVRmfRYnzKF6LWLpq7YxZl4DaqW-','mercato-dettaglio-mobile':'1kJ8RXfqvXyA4DxnMgq6aL2d6TJ8CNKqD','mercato-lista-mobile':'1FPmWltY5a8frQXhYZ09I_c9HSFpdYuc4','mercato-popup':'1Fqlxxmu4MaKY41BBnZnAorkySUCM4WBX','mercato-tablet':'1CWKHOwv9IxKYnR-dfevEnqR3A9zQ9lWC','partecipanti-mobile':'1HjxLcBsc-VPBtdXsyIhBVuBV0xGNCUUw','partecipanti-tablet':'1Iy1qr946YWw2oCgkSiEybGI3qAzXPvkq','probabili-desktop':'1Ho47BunGgJEZTWIuYAAyLKP2sL406jYo','probabili-mobile':'1-Juvk_Jcjnc0VJm7p3xEgCaYiAqnENsI','sala-stampa-banner':'13LJDc2-tweZrhMUUfgxXNz8LENMGX81L','sala-stampa-dashboard':'1SdPw18w6xQnMAsQxvj2btohdIFRJ4LpY','sala-stampa-header':'1Fp19zDHCKIuOBUab-HcjyhmfTTMNaRCi','video-header-mobile':'1Wo0cEnHyGB5fKfiVEM6YcxCMUlMhXi3n','video-header-tablet':'1WNd0XWO4TH2FNa3tbnSB0b6i6veC9PzL'
 };
-let TPL=[],sel=null,sponsorImg=null,layout='grid';
+const EXAMPLES=[
+  {category:'Lanner:Dooh',name:'Enilive',id:'10MnxteTaoNvVB7qnAVnLpeHLN3Hcwd-z'},
+  {category:'Lanner:Dooh',name:'McDonald’s',id:'1pF8gcVZTE-2b01ARguFIOXSVWsoszvJj'},
+  {category:'Lanner:Dooh',name:'Panini',id:'1rqqWLnVAv5gQyNiwe05Op9q-UV218jhc'},
+  {category:'Live Domination',name:'McDonald’s',id:'1IoIXhC_SawZXLWmNlo69ZLx-Z7tvmf0h'},
+  {category:'Live Domination',name:'Gillette',id:'1tmMayQ0d5y7of7MNRUcseihtL8z00v4d'},
+  {category:'Live Domination',name:'Alien',id:'1FdcGJqISTamT5OVzO47M9mWt-SJzFDUX'},
+  {category:'Live Domination',name:'Sisal Tipster',id:'1EEnOgnC3Vse21ok-tH10qwIOvAvIduuN'},
+  {category:'Live Domination',name:'Sisal Fun Club',id:'1WJlKydOyXrkd1PpuaBMd4iIrVzh5hyIf'},
+  {category:'Home Widget Probabili',name:'Vita da Carlo Mobile',id:'1j9YjarO87KcVJ5vlLLHBu0-zC-wXLTl1'},
+  {category:'Home Widget Probabili',name:'Vita da Carlo Desktop',id:'1sXfKmmWc6xddYGKhAOulHc7c7sx0Cbge'},
+  {category:'Home Widget Probabili',name:'Enilive Mobile',id:'1A_bdFQgI1ct_mYK1uWrv-hT39LAplLqH'},
+  {category:'Home Widget Probabili',name:'Enilive Desktop',id:'11_CGrsaxD_gM_cHbWG8TJMlBzbOZpPnA'},
+  {category:'Home Widget Probabili',name:'Bancomat Mobile',id:'1vdpYzwT7pIB38BoXgClV5PwQTKVJbpCq'},
+  {category:'Home Widget Probabili',name:'Bancomat Desktop',id:'1fqkRcKGsVWRhcGdyCubdRX8VaElst3da'},
+  {category:'Chat Msg',name:'Telepass',id:'1WgPwSe3bKcKbtUafLQK4-WjSWNt4rxsz'},
+  {category:'Chat Msg',name:'Panini',id:'1KSJ4XvD6p-DZQozoW66tNaLDP0QRC4iZ'},
+  {category:'Chat Msg',name:'Unipol',id:'15dXPqZ_zkG8R9sWMuJCv1IxolasxbyWH'},
+  {category:'Mercato',name:'eBay Popup',id:'1OXdRJoku5l8T36Y-eZ3Z_2KT6nKa7Abn'},
+  {category:'Mercato',name:'eBay Market Hub 02',id:'1xuQl8Px8oIyvGMbjB8sYJaldtQr-7BmU'},
+  {category:'Mercato',name:'eBay Market Hub 01',id:'1jHX3KY6bABTjPWUNZa4GysGdkTP-hGIu'},
+  {category:'Mercato',name:'eBay Banner 01',id:'1PNdwXWPyxluM6qz3TdfKwUoBL_3kWSQX'},
+  {category:'Mercato',name:'eBay Banner 02',id:'1uxxj9_Z_KcUMfsoqECiQqWDnIKikwfEJ'},
+  {category:'Simulatore',name:'Panini',id:'1eZuA1eNKOSo20ZBYAPhzLYNfDqReXImn'},
+  {category:'Simulatore',name:'ING',id:'1p0oSsYCUEH5azAsjMsVVphaqZlB4sAJE'},
+  {category:'Popup - Inserimento formazione',name:'Squid Game',id:'1YVwuMDhNXa90sPP_7cq4VYyxUz2Ddg1V'},
+  {category:'Popup - Inserimento formazione',name:'McDonald’s',id:'1ES2fahkDTxMqPheeFqknFap7iiL1RxJ8'},
+  {category:'Popup - Inserimento formazione',name:'Enilive',id:'1ivvQbP0aTo0jOo2eaDLY1uSBmT9-kxNZ'},
+  {category:'Card Dashboard',name:'Enilive',id:'1D1HsM2qDihKjBVqWxWjzZtOrYaonkIK8'},
+  {category:'Card Dashboard',name:'Pedro Contest',id:'1pFuM1TM482F7WSAnsQxHNIGCRQ5A1xMS'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Kingsman',id:'1jaHa40aGLV6M6mXLI97_Julqr8y6wKwZ'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Doctor Strange',id:'1LSTPLiySQnVLfiogFtJwDPkY3ZK-_K3A'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Predator Badlands',id:'1gfxY0b1PZeTa7Q2Na8yQzfneW_JHDPgE'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Squid Game 02',id:'1mrDgirUrAv-kihgy0qIGsqwAHCoBSksG'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Squid Game 01',id:'1lprvcb6HUoEI9hgoI93fSLsX50s-w2yh'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Captain America',id:'1Da5p7QjmIWC4kRu_9IdpgEdPTJcGPxE_'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Tempocasa',id:'11BIU8UrIH1BZckVFO9jiwAiTFZ45oKH9'},
+  {category:'Led Bordocampo - Inserimento formazione',name:'Loki',id:'1_GnLDCaiY6kac-M_JXd4uCjQbA0SKHAr'},
+  {category:'Sala Stampa',name:'Sala Stampa Banner',id:'1Oq3zikPcddt_ITq1KAeqsVMo6l201Jn4'},
+  {category:'Sala Stampa',name:'Sala Stampa Dashboard',id:'1oDLWCPlpwsk85GXHrJsIT8_Bly_aqvOM'},
+  {category:'Sala Stampa',name:'Sala Stampa Header',id:'1XH_3xCrmb-NuS2Lilfof66jDn0csTBXe'},
+  {category:'Sala Stampa',name:'Sala Stampa Dashboard JPG',id:'1ltODU4bvmtS73fx5IaX7kU4Reg4h0K6a'},
+  {category:'Sala Stampa',name:'Sala Stampa Header JPG',id:'1LVYna-NnQVyiybT6D9KQnu76NuE9TGJL'},
+  {category:'Sala Stampa',name:'Sala Stampa Banner JPG',id:'1RBcSMVb_eRpzZcPmwkvq1xiGqtedsg6A'},
+  {category:'Classifica',name:'Disney 01',id:'1Emd_JkB4DyTy1_g3agOFAB2ENXFJvJuF'},
+  {category:'Classifica',name:'Disney 02',id:'1AL9R92jP5rS9e2Fk1mMppwo4bGF9uzs7'}
+];
+let TPL=[],sel=null,sponsorImg=null,layout='grid',examplesIndex=0,examplesOpen=false;
 const grid=document.getElementById('grid'),preview=document.getElementById('preview'),canvas=document.getElementById('cv'),placeholder=document.getElementById('placeholder'),downloadBtn=document.getElementById('dl');
 const previewUrl=(name,size=600)=>PREVIEWS[name]?`${DRIVE}${PREVIEWS[name]}=w${size}`:GREEN+name+'.png';
 const label=name=>name.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
 function loadImg(src){return new Promise((resolve,reject)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=reject;img.src=src;});}
 function notify(message){const status=document.getElementById('status');status.textContent=message;status.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>status.classList.remove('show'),2200);}
+const examplesOverlay=document.getElementById('examplesOverlay'),examplesTrack=document.getElementById('examplesTrack'),examplesDots=document.getElementById('examplesDots'),examplesCounter=document.getElementById('examplesCounter');
+const exampleUrl=id=>`${DRIVE}${id}=w1200`;
+const examplesPerPage=()=>window.matchMedia('(max-width: 820px)').matches?1:3;
+function contextualExampleIndex(){
+  const name=sel?.name||'';
+  const rules=[
+    [/^classifica$/,'Classifica'],[/^chat-/,'Chat Msg'],[/^dashboard-card/,'Card Dashboard'],[/^mercato-/,'Mercato'],[/^live-simulatore$/,'Simulatore'],[/^probabili-/,'Home Widget Probabili'],[/^sala-stampa-/,'Sala Stampa'],[/^inserimento-formazione-popup$/,'Popup - Inserimento formazione'],[/^inserimento-formazione-led$/,'Led Bordocampo - Inserimento formazione'],[/^live-/,'Live Domination']
+  ];
+  const category=rules.find(([pattern])=>pattern.test(name))?.[1];
+  const index=category?EXAMPLES.findIndex(item=>item.category===category):0;
+  return index<0?0:index;
+}
+function renderExamples(){
+  const perPage=examplesPerPage(),fragment=document.createDocumentFragment();examplesTrack.innerHTML='';
+  for(let offset=0;offset<perPage;offset++){
+    const item=EXAMPLES[(examplesIndex+offset)%EXAMPLES.length],slide=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+    slide.className='example-slide';image.src=exampleUrl(item.id);image.alt=`${item.category}: ${item.name}`;image.decoding='async';caption.className='example-caption';caption.textContent=`${item.category} · ${item.name}`;slide.append(image,caption);fragment.appendChild(slide);
+  }
+  examplesTrack.appendChild(fragment);
+  const pageCount=Math.ceil(EXAMPLES.length/perPage),currentPage=Math.floor(examplesIndex/perPage),dotStart=Math.max(0,Math.min(currentPage-2,pageCount-5));examplesDots.innerHTML='';
+  for(let page=dotStart;page<Math.min(dotStart+5,pageCount);page++){
+    const dot=document.createElement('button');dot.type='button';dot.className='carousel-dot'+(page===currentPage?' active':'');dot.setAttribute('aria-label',`Vai alla pagina ${page+1}`);if(page===currentPage)dot.setAttribute('aria-current','true');dot.addEventListener('click',()=>{examplesIndex=page*perPage;renderExamples();});examplesDots.appendChild(dot);
+  }
+  const first=examplesIndex+1,last=Math.min(examplesIndex+perPage,EXAMPLES.length);examplesCounter.textContent=`${first}–${last} di ${EXAMPLES.length}`;
+}
+function moveExamples(direction){const step=examplesPerPage();examplesIndex=(examplesIndex+direction*step+EXAMPLES.length)%EXAMPLES.length;renderExamples();}
+function openExamples(){examplesIndex=contextualExampleIndex();examplesOpen=true;examplesOverlay.classList.add('open');examplesOverlay.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');renderExamples();document.getElementById('examplesClose').focus();}
+function closeExamples(){examplesOpen=false;examplesOverlay.classList.remove('open');examplesOverlay.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');document.getElementById('examplesBtn').focus();}
 function renderGrid(){
   const query=document.getElementById('q').value.trim().toLowerCase();
   const items=TPL.filter(t=>t.name.toLowerCase().includes(query)||label(t.name).toLowerCase().includes(query));
@@ -183,6 +179,13 @@ document.getElementById('gridView').addEventListener('click',()=>setLayout('grid
 document.getElementById('listView').addEventListener('click',()=>setLayout('list'));
 document.getElementById('file').addEventListener('change',onFile);
 downloadBtn.addEventListener('click',download);
+document.getElementById('examplesBtn').addEventListener('click',openExamples);
+document.getElementById('examplesClose').addEventListener('click',closeExamples);
+document.getElementById('examplesPrev').addEventListener('click',()=>moveExamples(-1));
+document.getElementById('examplesNext').addEventListener('click',()=>moveExamples(1));
+examplesOverlay.addEventListener('click',event=>{if(event.target===examplesOverlay)closeExamples();});
+document.addEventListener('keydown',event=>{if(!examplesOpen)return;if(event.key==='Escape')closeExamples();if(event.key==='ArrowLeft')moveExamples(-1);if(event.key==='ArrowRight')moveExamples(1);});
+window.addEventListener('resize',()=>{if(examplesOpen)renderExamples();});
 fetch('templates.json').then(response=>{if(!response.ok)throw new Error('templates.json');return response.json();}).then(data=>{TPL=data.templates;renderGrid();if(TPL.length)selectTpl(TPL.find(t=>t.name==='sala-stampa-dashboard')||TPL[0]);}).catch(()=>{grid.innerHTML='<div class="empty-list">Impossibile caricare i template.</div>';});
 </script>
 </body>
